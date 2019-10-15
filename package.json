@@ -1,0 +1,28 @@
+{
+  "name": "swapi-node-app",
+  "version": "1.0.0",
+  "description": "A little exercise using a Star Wars API [https://swapi.co/](https://swapi.co/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffyjkang/node-exercise.git"
+  },
+  "author": "jeff kang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffyjkang/node-exercise/issues"
+  },
+  "homepage": "https://github.com/jeffyjkang/node-exercise#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
