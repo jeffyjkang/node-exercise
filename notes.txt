@@ -1,3 +1,10 @@
+to start app locally:
+in root directory, install node modules with: "npm i"
+run using nodemon with: "npm start"
+run using node with: "node index.js"
+
+
+
 todo:
 - overview
 1. get complete list of all resource at once (complete)
