@@ -1,12 +1,12 @@
 todo:
 - overview
-1. get complete list of all resource at once
+1. get complete list of all resource at once (complete)
 2. sort array of objects
 3. replace object field values with more appropriate data
 4. make express server that exposes following 2 endpoints:
-    a. /people
+    a. /people (complete)
     b. /planets
-5. people endpoint returns all people (87)
+5. people endpoint returns all people (87) (complete)
 6. optional query param: "sortBy"
     a. name
     b. height
