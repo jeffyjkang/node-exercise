@@ -1,0 +1,6 @@
+/people = returns all 87 people
+/people/name = returns all 87 people sorted ascending by name
+/people/height = returns all 87 people sorted ascending by height
+/people/mass = returns all 87 people sorted ascending by mass
+
+** only acceptable parameters include: name/height/mass for sort, or will return error message
