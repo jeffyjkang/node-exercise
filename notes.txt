@@ -2,18 +2,18 @@ todo:
 - overview
 1. get complete list of all resource at once (complete)
 2. sort array of objects (complete)
-3. replace object field values with more appropriate data
-4. make express server that exposes following 2 endpoints:
+3. replace object field values with more appropriate data (complete)
+4. make express server that exposes following 2 endpoints: (complete)
     a. /people (complete)
-    b. /planets
+    b. /planets (complete)
 5. people endpoint returns all people (87) (complete)
 6. optional query param: "sortBy" (complete)
     a. name (complete)
     b. height (complete)
     c. mass (complete)
-7. planets endpoint must return all planets
+7. planets endpoint must return all planets (complete)
 8. in planets, residents field on each planet should be replaced by residents full names
-    instead of the default from SWAPI, which are links
+    instead of the default from SWAPI, which are links (complete)
 
 
 routing branch:
