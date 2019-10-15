@@ -87,6 +87,72 @@ const customSort = (arr, value) => {
   }
 };
 
+// endpoint to get all planets
+server.get("/planets", async (req, res) => {
+  // first page of swapi planets
+  const swapi = "https://swapi.co/api/planets/?page=1";
+  try {
+    // init all Planets array
+    let allPlanets = [];
+    // first page assign response, update all Planets with results
+    let response = await axios.get(swapi);
+    allPlanets = allPlanets.concat(response.data.results);
+    // custom async for Each function
+    async function asyncForEach(arr, cb) {
+      for (let i = 0; i < arr.length; i++) {
+        await cb(arr[i], i, arr);
+      }
+    }
+    // update first set of planets with async function,
+    // loop through each planet
+    // loop again through each resident
+    await (async () => {
+      await asyncForEach(allPlanets, async planet => {
+        let residents = planet.residents;
+        // init new residents array
+        let newRes = [];
+        await (async () => {
+          await asyncForEach(residents, async resident => {
+            resident = await axios.get(resident).then(res => res.data.name);
+            // add each residents name to the new residents array
+            newRes.push(resident);
+          });
+        })();
+        // reassign the planets residents array with the new residents which holds name values
+        planet.residents = newRes;
+      });
+    })();
+
+    // while res.data.next exists, append next page to all Planets
+    while (response.data.next) {
+      response = await axios.get(response.data.next);
+      // create temp planets array for each iteration of next page
+      let tempPlanets = response.data.results;
+      // loop through each planet, then each resident
+      await (async () => {
+        await asyncForEach(tempPlanets, async planet => {
+          let residents = planet.residents;
+          let newRes = [];
+          await (async () => {
+            await asyncForEach(residents, async resident => {
+              resident = await axios.get(resident).then(res => res.data.name);
+              newRes.push(resident);
+            });
+          })();
+          planet.residents = newRes;
+        });
+      })();
+      // concat the existing all planets array with the new temp planets array
+      allPlanets = allPlanets.concat(tempPlanets);
+    }
+    // return all Planets
+    return res.status(200).json(allPlanets);
+    // catch for api error
+  } catch (error) {
+    res.status(500).json({ error: "API not able to get people" });
+  }
+});
+
 const PORT = process.env.PORT;
 server.listen(PORT, () => console.log("API running..."));
 module.exports = { server };

@@ -4,3 +4,7 @@
 /people/mass = returns all 87 people sorted ascending by mass
 
 ** only acceptable parameters include: name/height/mass for sort, or will return error message
+
+/planets = returns all 61 planets, with names field changed to actual name instead of links
+
+** note planets endpoint takes a long time to fetch
